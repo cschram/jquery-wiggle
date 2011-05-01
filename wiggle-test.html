@@ -4,20 +4,28 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <div id="wiggler">
-        Click me to wiggle!
+    <div class="wiggler">
+        <img src="http://www.androidfreeware.net/img2/mario_jump_android_1.gif">
+    </div>
+    
+    <div class="wiggler">
+        <img src="http://www.androidfreeware.net/img2/mario_jump_android_1.gif">
+    </div>
+    
+    <div class="wiggler">
+        <img src="http://www.androidfreeware.net/img2/mario_jump_android_1.gif">
     </div>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script src="jquery-wiggle.js"></script>
     <script>
-        $(function () {
-            $('#wiggler').click(function () {
+        $(function doSomeWigglin() {
+            $('.wiggler').each(function(){
                 $(this).wiggle({
-                    waggle : 10,
+                    waggle : Math.random()*20,
                     duration : 5
-                });
-            });
+                }, doSomeWigglin);
+            })
         });
     </script>
 </body>

@@ -10,33 +10,39 @@
         duration : 2
     };
     
+    function rand(waggle) {
+        return Math.random() % (waggle - (waggle / 2) + 1) + (waggle / 2);
+    }
     $.fn.wiggle = function (options, callback) {
         options = $.extend({}, defaults, options);
         
         var duration = options.duration,
             elem = this,
-            top = elem.css('top'),
+            moveLeft = false,
             left = elem.css('left'),
             pos = elem.css('position');
-            
         elem.css('position', 'relative');
         
         function doWiggle() {
-            elem.css('top', String(Math.random() * options.waggle) + 'px');
-            elem.css('left', String(Math.random() * options.waggle) + 'px');
+            var move = rand(options.waggle);
+            elem.animate({
+                left : moveLeft ? move : -move
+            }, 200);
+            moveLeft = !moveLeft;
             
-            duration -= 0.1;
+            duration -= 0.2;
             if (duration <= 0) {
-                elem.css('top', top);
                 elem.css('left', left);
                 elem.css('position', pos);
                 
+                clearTimeout(timeout);
+                
                 callback && callback();
             } else {
-                setTimeout(doWiggle, 100);
+                setTimeout(doWiggle, 200);
             }
         }
-        setTimeout(doWiggle, 100);
+        setTimeout(doWiggle, 200);
     };
     
-}(jQuery));
+})(jQuery);

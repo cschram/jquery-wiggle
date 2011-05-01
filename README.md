@@ -7,4 +7,6 @@ Make your elements wiggle and waggle!
         duration : 2 // how long to wiggle
     });
 
-*wiggles*
+::wiggles::
+
+Thanks to help from the waggler imsky on #jquery
