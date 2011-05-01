@@ -10,3 +10,5 @@ Make your elements wiggle and waggle!
 ::wiggles::
 
 Thanks to help from the waggler imsky on #jquery
+
+Heres a live demonstration! http://jsfiddle.net/FuV8R/12/
