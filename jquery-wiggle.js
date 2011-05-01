@@ -7,12 +7,14 @@
     
     var defaults = {
         waggle : 5,
-        duration : 2
+        duration : 2,
+        interval : 200
     };
     
     function rand(waggle) {
         return Math.random() % (waggle - (waggle / 2) + 1) + (waggle / 2);
     }
+    
     $.fn.wiggle = function (options, callback) {
         options = $.extend({}, defaults, options);
         
@@ -27,14 +29,14 @@
             var move = rand(options.waggle);
             elem.animate({
                 left : moveLeft ? move : -move
-            }, 200);
+            }, options.interval);
             moveLeft = !moveLeft;
             
             if (options.wiggleCallback) {
                 options.wiggleCallback(elem);
             }
             
-            duration -= 0.2;
+            duration -= options.interval / 1000;
             if (duration <= 0) {
                 elem.css('left', left);
                 elem.css('position', pos);
@@ -43,10 +45,10 @@
                 
                 callback && callback();
             } else {
-                setTimeout(doWiggle, 200);
+                setTimeout(doWiggle, options.interval);
             }
         }
-        setTimeout(doWiggle, 200);
+        setTimeout(doWiggle, options.interval);
     };
     
 })(jQuery);
