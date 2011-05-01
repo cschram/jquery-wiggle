@@ -30,6 +30,10 @@
             }, 200);
             moveLeft = !moveLeft;
             
+            if (options.wiggleCallback) {
+                options.wiggleCallback(elem);
+            }
+            
             duration -= 0.2;
             if (duration <= 0) {
                 elem.css('left', left);

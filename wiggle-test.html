@@ -23,7 +23,12 @@
             $('.wiggler').each(function(){
                 $(this).wiggle({
                     waggle : Math.random()*20,
-                    duration : 5
+                    duration : 5,
+                    wiggleCallback : function (elem) {
+                        elem.animate({
+                            zoom : 1 + Math.random()
+                        }, 200);
+                    }
                 }, doSomeWigglin);
             })
         });
