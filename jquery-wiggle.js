@@ -41,7 +41,7 @@
                 elem.css('left', left);
                 elem.css('position', pos);
                 
-                clearTimeout(timeout);
+                clearTimeout(duration);
                 
                 callback && callback();
             } else {
