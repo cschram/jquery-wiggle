@@ -22,7 +22,8 @@
             elem = this,
             moveLeft = false,
             left = elem.css('left'),
-            pos = elem.css('position');
+            pos = elem.css('position'),
+            timer;
         elem.css('position', 'relative');
         
         function doWiggle() {
@@ -41,14 +42,14 @@
                 elem.css('left', left);
                 elem.css('position', pos);
                 
-                clearTimeout(duration);
+                clearTimeout(timer);
                 
                 callback && callback();
             } else {
-                setTimeout(doWiggle, options.interval);
+                timer = setTimeout(doWiggle, options.interval);
             }
         }
-        setTimeout(doWiggle, options.interval);
+        timer = setTimeout(doWiggle, options.interval);
     };
     
 })(jQuery);
